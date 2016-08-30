@@ -65,84 +65,80 @@ class GameSubmitter
     tmp
   end
 
+  def get_response http, uri, cookie=nil
+    req = Net::HTTP::Get.new uri
+    req['Cookie'] = cookie
+    http.request req
+  end
+
+  def post_response http, uri, form_data=nil, cookie=nil
+    req = Net::HTTP::Post.new uri
+    req.set_form_data form_data
+    req['Cookie'] = cookie
+    http.request req
+  end
+
   def log_in_response http, uri, user, pwd
     # Get form page (for token and cookie)
     uri.path = '/users/sign_in'
-    req = Net::HTTP::Get.new uri
-    res = http.request req
+    res = get_response http, uri
 
     # Sign in
-    req = Net::HTTP::Post.new uri
-    req.set_form_data(
+    form_data = {
       'authenticity_token': get_token(res.body),
       'user[email]': user,
       'user[password]': pwd,
       'user[remember_me]': 1,
       'commit': 'Sign in',
-    )
-    req['Cookie'] = res['set-cookie']
-
-    http.request req
+    }
+    post_response http, uri, form_data, res['set-cookie']
   end
 
   def create_game_response http, uri, cookie, date
     # Get form page (for token and cookie)
     uri.path = '/games/new'
-    req = Net::HTTP::Get.new uri
-    req['Cookie'] = cookie
-    res = http.request req
+    res = get_response http, uri, cookie
 
     # Create Game
     uri.path = '/games'
-    req = Net::HTTP::Post.new uri
-    req.set_form_data(
+    form_data = {
       'authenticity_token': get_token(res.body),
       'game[ended_at]': date,
       'commit': 'Create Game',
-    )
-
-    req['Cookie'] = res['set-cookie']
-
-    http.request req
+    }
+    post_response http, uri, form_data, res['set-cookie']
   end
 
   def create_category_response http, uri, cookie, name
     # Get form page (for token and cookie)
     uri.path = '/categories/new'
-    req = Net::HTTP::Get.new uri
-    req['Cookie'] = cookie
-    res = http.request req
+    res = get_response http, uri, cookie
 
+    # Create Category
     uri.path = "/categories"
-    req = Net::HTTP::Post.new uri
-    req.set_form_data(
+    form_data = {
       'authenticity_token': get_token(res.body),
       'category[name]': name,
       'commit': 'Create Category',
-    )
-    req['Cookie'] = res['set-cookie']
-    http.request req
+    }
+    post_response http, uri, form_data, res['set-cookie']
   end
 
   def create_answer http, uri, cookie, game_id, cat_id, date, ans, ques, val
     # Get form page (for token and cookie)
     uri.path = "/games/#{game_id}/answers/new"
-    req = Net::HTTP::Get.new uri
-    req['Cookie'] = cookie
-    res = http.request req
+    res = get_response http, uri, cookie
 
+    # Create Answer
     uri.path = "/games/#{game_id}/answers"
-    req = Net::HTTP::Post.new uri
-    req.set_form_data(
+    form_data = {
       'authenticity_token': get_token(res.body),
       'answer[category_id]': cat_id,
       'answer[answer]': ans,
       'answer[correct_question]': ques,
       'answer[amount]': val,
       'answer[start_date]': date
-    )
-    req['Cookie'] = res['set-cookie']
-
-    http.request req
+    }
+    post_response http, uri, form_data, res['set-cookie']
   end
 end
