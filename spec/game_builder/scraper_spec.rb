@@ -69,7 +69,7 @@ module GameBuilder
           ]
           q_and_a_hash['R2-CA0-CL0'] = [subject.rounds[2].categories[0].clues[0].question, subject.rounds[2].categories[0].clues[0].answer]
           expected = {
-            "R0-CA0-CL0"=>["the Jordan", "River mentioned most often in the Bible"],
+            "R0-CA0-CL0"=>["\\\\<i>the Jordan</i>", "River mentioned most often in the Bible"],
             "R0-CA1-CL1"=>["the rickshaw", "In 1869 an American minister created this \"oriental\" transportation"],
             "R0-CA2-CL2"=>["a weasel", "When husbands \"pop\" for an ermine coat, they\\'re actually buying this fur"],
             "R0-CA3-CL3"=>["ChÃ¢teaubriand", "French for a toothsome cut of beef served to a twosome"],

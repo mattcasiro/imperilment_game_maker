@@ -28,7 +28,7 @@ module GameBuilder
     def clean_round round
       valid_categories = round.categories.map do |category|
         valid_clues = category.clues.select { |clue| !invalid_clue? clue }
-        category = Category.new(category.name, valid_clues)
+        category = Category.new(category.name, clean_clues(valid_clues))
       end.select { |category| category.clues.size >= 3 }
 
       Round.new(valid_categories)
@@ -41,6 +41,18 @@ module GameBuilder
       clue.answer&.include?(LINK_STR) ||    # link in answer
       clue.question&.include?(LINK_STR) ||  # link in question
       clue.answer&.include?(VDD_STR)        # video daily double (no link)
+    end
+
+    def clean_clues clues
+      clues.map do |clue|
+        clue.answer = remove_html(clue.answer)
+        clue.question = remove_html(clue.question)
+        clue
+      end
+    end
+
+    def remove_html str
+      str.gsub(/\\/,'').gsub(/<.*>([^<]*)<.*>/, '\1').gsub(/[ ]{2,}/, ' ')
     end
   end
 end

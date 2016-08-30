@@ -39,5 +39,11 @@ module GameBuilder
         it("should correctly sort clues") { expect(category.clues.sort).to eql(category.clues) }
       end
     end
+
+    describe "A clue with html tags and backspaces" do
+      let(:question) { CategorySelector.new(game_1.rounds[0]).category(0).clues[0].question }
+
+      it { expect(question).to eq("the Jordan") }
+    end
   end
 end
