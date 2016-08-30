@@ -1,8 +1,8 @@
-require 'lib/game_builder'
+require 'build_game'
 require 'net/http'
 require 'pry'
 
-class IGameMaker
+class GameSubmitter
   TOKEN_REGEX = "//meta[@name='csrf-token']"
 
   def submit_games(count, start_date, user, pwd)
