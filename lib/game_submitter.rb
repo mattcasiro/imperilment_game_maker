@@ -21,7 +21,7 @@ class GameSubmitter
           http,
           uri,
           result['set-cookie'],
-          (date + (60*60*24*7)),
+          (date + (60*60*24*6)),
         )
         game_id = get_id result, uri
 
