@@ -78,7 +78,7 @@ module GameBuilder
       category = node.xpath(".//td[@class='category_name']").text
       question = clean_question(node.xpath(".//div//@onmouseover")&.first&.value)
       answer = clean_answer (node.xpath(".//div//@onmouseout")&.first&.value)
-      [Category.new(category, [Clue.new(question, answer, 0)])]
+      [Category.new(category, [Clue.new(question, answer)])]
     end
 
     # Get an array of all clues for a given category (represented numerically) from a given source
