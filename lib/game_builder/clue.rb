@@ -8,7 +8,7 @@ module GameBuilder
     # @param q [String] is the question
     # @param a [String] is the answer to the question
     # @param v [Int] is the value of the clue (default: 0)
-    def initialize(q, a, v=0)
+    def initialize(q, a, v=nil)
       @question = q
       @answer = a
       @value = v
