@@ -1,13 +1,19 @@
 require 'build_game'
 require 'net/http'
+require 'json'
+require 'time'
 
 class GameSubmitter
   TOKEN_REGEX = "//meta[@name='csrf-token']"
 
-  def submit_games(new_uri, count, start_date, user, pwd)
+  def initialize new_uri, user, pwd, count=1, start_date=nil
+    # Ensure URL is prefixed and suffixed, then build URI
     new_uri = "http://#{new_uri}" unless new_uri.index("http")
-    raise ArgumentError, "URI is missing port!" unless new_uri.index(":", 5)
     uri = URI new_uri
+
+    # Get a start date equal to the end date of the last posted game
+    start_date = last_game_date(uri) unless start_date
+
     # Ensure game starts on a Monday
     date = adjust_date_to_monday start_date
     
@@ -40,6 +46,8 @@ class GameSubmitter
             result = create_answer(http, uri, result['set-cookie'],
                                    game_id, category_id, date,
                                    clue.answer, clue.question, clue.value,)
+
+            # Increment date forward one day
             date += (60*60*24) 
           end
         end
@@ -48,6 +56,15 @@ class GameSubmitter
   end
 
   private
+  def last_game_date uri
+    result = Net::HTTP.start uri.host, uri.port do |http|
+      uri.path = "/games.json"
+      req = Net::HTTP::Get.new uri
+      http.request req
+    end
+    Time.parse(JSON.parse(result.body).first['ended_at'])
+  end
+
   def get_token body
     Nokogiri.parse(body).xpath(TOKEN_REGEX)[0]['content']
   end
