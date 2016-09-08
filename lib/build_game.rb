@@ -6,6 +6,9 @@ class BuildGame
   class DuplicateGameError < StandardError
   end
 
+  # Set difficulty to determine the types of clues that are selected
+  DIFFICULTY = :medium
+
   attr_reader :games
 
   def initialize(num=1, user_paths=nil)
@@ -23,11 +26,12 @@ class BuildGame
       sources.push tmp.source
 
       rounds = begin
+        i = (DIFFICULTY == :easy || DIFFICULTY == :medium) ? 0 : 1
         # Reduce game to three categories (one per round)
         [
-          r1 = GameBuilder::CategorySelector.new(tmp.rounds[0]).category,
-          r2 = GameBuilder::CategorySelector.new(tmp.rounds[1]).category,
-          r3 = tmp.rounds[2].categories.first
+          r1 = GameBuilder::CategorySelector.new(tmp.rounds[i]).category,
+          GameBuilder::CategorySelector.new(tmp.rounds[1]).category(r1),
+          tmp.rounds[2].categories.first
         ]
       rescue ArgumentError => err
         raise err if user_paths
@@ -37,6 +41,7 @@ class BuildGame
       multiplier = 1
       rounds.map do |category|
         clues = category.clues.reject { |clue| clue.nil? }
+        clues = clues[(clues.length % 3)..-1] if clues.length > 1 && (DIFFICULTY == :medium || DIFFICULTY == :hard)
         if clues.size > 2 then
           clues[0].value = 200 * multiplier
           clues[1].value = 600 * multiplier

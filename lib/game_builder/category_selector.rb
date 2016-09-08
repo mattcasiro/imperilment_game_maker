@@ -16,9 +16,17 @@ module GameBuilder
 
     # Get a randomly selected category
     #
+    # @param excluded_category [Category] a category that should not be selected
     # @param num [Int] overrides the random category with a specific selection
-    def category(num=(0...round.categories.count).to_a.sample)
-      round.categories[num]
+    def category excluded_category=nil, num=nil
+      # Reject matching category to prevent duplicates
+      tmp_rnd = if excluded_category
+        Round.new(round.categories.reject { |category| category.eql? excluded_category })
+      end || round
+      raise ArgumentError, "Not enough categories" if tmp_rnd.categories.empty?
+      num = (0...tmp_rnd.categories.count).to_a.sample unless num
+
+      tmp_rnd.categories[num]
     end
 
     private
@@ -45,13 +53,13 @@ module GameBuilder
 
     def clean_clues clues
       clues.map do |clue|
-        clue.answer = remove_html(clue.answer)
-        clue.question = remove_html(clue.question)
+        clue.answer = remove_code(clue.answer)
+        clue.question = remove_code(clue.question)
         clue
       end
     end
 
-    def remove_html str
+    def remove_code str
       str.gsub(/\\/,'').gsub(/<.*>([^<]*)<.*>/, '\1').gsub(/[ ]{2,}/, ' ')
     end
   end

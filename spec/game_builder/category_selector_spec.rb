@@ -33,15 +33,25 @@ module GameBuilder
 
     describe "#category" do
       context "Round[1] Category[0] of game 383" do
-        let(:category) { CategorySelector.new(game_383.rounds[1]).category(0) }
+        let(:category) { CategorySelector.new(game_383.rounds[1]).category(nil, 0) }
 
         it("should have 3 valid clues") { expect(category.clues.size).to eql(3) }
         it("should correctly sort clues") { expect(category.clues.sort).to eql(category.clues) }
+
+        context "When excluding a category" do
+          it "should return a different category" do
+            expect(CategorySelector.new(game_383.rounds[1]).category(category, 0)).not_to eql(category)
+          end
+
+          it "should raise an error if no categories remain" do
+            expect { CategorySelector.new(Round.new([category])).category(category) }.to raise_error(ArgumentError)
+          end
+        end
       end
     end
 
     describe "A clue with html tags and backspaces" do
-      let(:question) { CategorySelector.new(game_1.rounds[0]).category(0).clues[0].question }
+      let(:question) { CategorySelector.new(game_1.rounds[0]).category(nil, 0).clues[0].question }
 
       it { expect(question).to eq("the Jordan") }
     end

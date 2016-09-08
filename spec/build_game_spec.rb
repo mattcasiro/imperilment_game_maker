@@ -21,22 +21,18 @@ describe BuildGame do
       expect(subject.first.class).to eql(Array)
     end
 
-    context "that" do
-      it "has three categories" do
-        expect(subject.first.size).to eql(3)
-        subject.first.each { |ca| expect(ca.class).to eql(GameBuilder::Category) }
-      end
+    it "has three categories" do
+      expect(subject.first.size).to eql(3)
+      subject.first.each { |ca| expect(ca.class).to eql(GameBuilder::Category) }
+    end
 
-      context "with" do
-        it "at least three clues in the first two categories" do
-          expect(subject[0][0].clues.size).to be >= 3
-          expect(subject[0][1].clues.size).to be >= 3
-        end
+    it "has at least three clues in the first two categories" do
+      expect(subject[0][0].clues.size).to be >= 3
+      expect(subject[0][1].clues.size).to be >= 3
+    end
 
-        it "and one clue in the last category" do
-          expect(subject[0][2].clues.size).to eql(1)
-        end
-      end
+    it "has one clue in the last category" do
+      expect(subject[0][2].clues.size).to eql(1)
     end
 
     context "given two games" do
@@ -59,16 +55,14 @@ describe BuildGame do
           subject.each { |ar| ar.each { |ca| expect(ca.class).to eql(GameBuilder::Category) } }
         end
 
-        context "with" do
-          it "at least three clues in the first two categories" do
-            expect(subject[0][0].clues.size).to be >= 3
-            expect(subject[0][1].clues.size).to be >= 3
-          end
+        it "has at least three clues in the first two categories" do
+          expect(subject[0][0].clues.size).to be >= 3
+          expect(subject[0][1].clues.size).to be >= 3
+        end
 
-          it "and one clue in the last category" do
-            expect(subject[0][2].clues.size).to eql(1)
-            expect(subject[1][2].clues.size).to eql(1)
-          end
+        it "has one clue in the last category" do
+          expect(subject[0][2].clues.size).to eql(1)
+          expect(subject[1][2].clues.size).to eql(1)
         end
       end
     end
