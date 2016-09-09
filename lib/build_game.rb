@@ -1,5 +1,5 @@
 require 'game_builder/scraper'
-require 'game_builder/category_selector'
+require 'game_submitter/category_selector'
 
 class BuildGame
   class DuplicateGameError < StandardError
@@ -28,8 +28,8 @@ class BuildGame
         i = (DIFFICULTY == :easy || DIFFICULTY == :medium) ? 0 : 1
         # Reduce game to three categories (one per round)
         [
-          r1 = GameBuilder::CategorySelector.new(tmp.rounds[i]).category,
-          GameBuilder::CategorySelector.new(tmp.rounds[1]).category(r1),
+          r1 = GameSubmitter::CategorySelector.new(tmp.rounds[i]).category,
+          GameSubmitter::CategorySelector.new(tmp.rounds[1]).category(r1),
           tmp.rounds[2].categories.first
         ]
       rescue ArgumentError => err

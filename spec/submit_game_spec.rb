@@ -1,7 +1,7 @@
-require 'game_submitter.rb'
+require 'submit_game.rb'
 require 'vcr_setup.rb'
 
-describe GameSubmitter do
+describe SubmitGame do
   context "Creating a game" do
     VCR.use_cassette("new_game_cassette") do
       it { expect(false).to be_truthy }

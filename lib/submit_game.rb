@@ -3,7 +3,7 @@ require 'net/http'
 require 'json'
 require 'time'
 
-class GameSubmitter
+class SubmitGame
   TOKEN_REGEX = "//meta[@name='csrf-token']"
 
   def initialize new_uri, user, pwd, count=1, start_date=nil

@@ -1,14 +1,14 @@
-require 'game_builder/category_selector'
+require 'game_submitter/category_selector'
 require 'constants'
 
-module GameBuilder
+module GameSubmitter
 
   describe CategorySelector do
 
-    let(:game_1) { Scraper.new.new_game!(FIXTURE_PATH + 'show_1_id_173_S1E1.html') }
-    let(:game_337) { Scraper.new.new_game!(FIXTURE_PATH + 'show_337_id_4260.html') }
-    let(:game_383) { Scraper.new.new_game!(FIXTURE_PATH + 'show_383_id_4279.html') }
-    let(:game_6474) { Scraper.new.new_game!(FIXTURE_PATH + 'show_6474_id_4010.html') }
+    let(:game_1) { GameBuilder::Scraper.new.new_game!(FIXTURE_PATH + 'show_1_id_173_S1E1.html') }
+    let(:game_337) { GameBuilder::Scraper.new.new_game!(FIXTURE_PATH + 'show_337_id_4260.html') }
+    let(:game_383) { GameBuilder::Scraper.new.new_game!(FIXTURE_PATH + 'show_383_id_4279.html') }
+    let(:game_6474) { GameBuilder::Scraper.new.new_game!(FIXTURE_PATH + 'show_6474_id_4010.html') }
 
     context "A round without any valid categories" do
       it "should raise an ArgumentError" do
@@ -45,7 +45,7 @@ module GameBuilder
           end
 
           it "should raise an error if no categories remain" do
-            expect { CategorySelector.new(Round.new([category])).category(category) }.to raise_error(ArgumentError)
+            expect { CategorySelector.new(GameBuilder::Round.new([category])).category(category) }.to raise_error(ArgumentError)
           end
         end
       end

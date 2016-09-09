@@ -1,4 +1,7 @@
-module GameBuilder
+require 'game_builder/category'
+require 'game_builder/round'
+
+module GameSubmitter
   class CategorySelector
     attr_reader :round
     LINK_STR = "a href="
@@ -21,7 +24,7 @@ module GameBuilder
     def category excluded_category=nil, num=nil
       # Reject matching category to prevent duplicates
       tmp_rnd = if excluded_category
-        Round.new(round.categories.reject { |category| category.eql? excluded_category })
+        GameBuilder::Round.new(round.categories.reject { |category| category.eql? excluded_category })
       end || round
       raise ArgumentError, "Not enough categories" if tmp_rnd.categories.empty?
       num = (0...tmp_rnd.categories.count).to_a.sample unless num
@@ -36,10 +39,10 @@ module GameBuilder
     def clean_round round
       valid_categories = round.categories.map do |category|
         valid_clues = category.clues.select { |clue| !invalid_clue? clue }
-        category = Category.new(category.name, clean_clues(valid_clues))
+        category = GameBuilder::Category.new(category.name, clean_clues(valid_clues))
       end.select { |category| category.clues.size >= 3 }
 
-      Round.new(valid_categories)
+      GameBuilder::Round.new(valid_categories)
     end
 
     # Returns true if the clue is NOT valid
