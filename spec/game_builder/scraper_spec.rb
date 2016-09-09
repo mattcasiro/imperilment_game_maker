@@ -1,15 +1,14 @@
 require 'game_builder/scraper'
+require 'constants'
 
 module GameBuilder
   
-  describe JArchiveScraper do
-    BASE_PATH = 'spec/game_builder/fixtures/'
-
-    let(:scraper) { JArchiveScraper.new }
+  describe Scraper do
+    let(:scraper) { Scraper.new }
 
     # Test basic functionality on the oldest game
     context "Episode 0001" do
-      subject { scraper.new_game!(BASE_PATH + 'show_1_id_173_S1E1.html') }
+      subject { scraper.new_game!(FIXTURE_PATH + 'show_1_id_173_S1E1.html') }
 
       it("has three rounds") { expect(subject.rounds.count).to eql(3) }
       
@@ -90,7 +89,7 @@ module GameBuilder
 
     # Test basic functionality on the newest game
     context "Episode 7351" do
-      subject { scraper.new_game!(BASE_PATH + 'show_7351_id_5366_S32.html') }
+      subject { scraper.new_game!(FIXTURE_PATH + 'show_7351_id_5366_S32.html') }
 
       it("has three rounds") { expect(subject.rounds.count).to eql(3) }
 
@@ -163,28 +162,28 @@ module GameBuilder
     # Test game without a round 1
     context "A game without a round 1" do
       it "should throw a 'Missing Round' error" do
-        expect{ scraper.new_game!(BASE_PATH + "show_366_id_4284.html") }.to raise_error(MissingRoundError)
+        expect{ scraper.new_game!(FIXTURE_PATH + "show_366_id_4284.html") }.to raise_error(MissingRoundError)
       end
     end
 
     # Test game without a round 2
     context "A game without a round 2" do
       it "should throw a 'Missing Round' error" do
-        expect{ scraper.new_game!(BASE_PATH + "show_317_id_4256.html") }.to raise_error(MissingRoundError)
+        expect{ scraper.new_game!(FIXTURE_PATH + "show_317_id_4256.html") }.to raise_error(MissingRoundError)
       end
     end
 
     # Test game without a final round
     context "A game without a final round" do
       it "should throw a 'Missing Round' error" do
-        expect{ scraper.new_game!(BASE_PATH + "show_672_id_5348.html") }.to raise_error(MissingRoundError)
+        expect{ scraper.new_game!(FIXTURE_PATH + "show_672_id_5348.html") }.to raise_error(MissingRoundError)
       end
     end
 
     # Test invalid clues changed nil
     context "Clues with placeholder data (instead of being empty)" do
-      let(:game_348) { scraper.new_game!(BASE_PATH + "show_348_id_4271.html") }
-      let(:game_465) { scraper.new_game!(BASE_PATH + "show_465_id_4788.html") }
+      let(:game_348) { scraper.new_game!(FIXTURE_PATH + "show_348_id_4271.html") }
+      let(:game_465) { scraper.new_game!(FIXTURE_PATH + "show_465_id_4788.html") }
 
       it "should return nil if '= / ='" do
         expect(game_348.rounds[0].categories[0].clues[0].question).to eql(nil)
@@ -204,7 +203,7 @@ module GameBuilder
 
     # Test pages with poor visual formatting are still processed properly
     context "A game with inconsistent visual formating online" do
-      subject { scraper.new_game!(BASE_PATH + "show_383_id_4279.html") }
+      subject { scraper.new_game!(FIXTURE_PATH + "show_383_id_4279.html") }
 
       it("has three rounds") { expect(subject.rounds.count).to eql(3) }
 
@@ -237,8 +236,8 @@ module GameBuilder
 
     # Test symbols and characters are parsed correctly
     context "A string with non-english language characters" do
-      let(:game_4812) { scraper.new_game!(BASE_PATH + "show_4812_id_426.html") }
-      let(:game_6474) { scraper.new_game!(BASE_PATH + "show_6474_id_4010.html") }
+      let(:game_4812) { scraper.new_game!(FIXTURE_PATH + "show_4812_id_426.html") }
+      let(:game_6474) { scraper.new_game!(FIXTURE_PATH + "show_6474_id_4010.html") }
 
       it "displays accented characters as displayed on the source page" do
         expect(game_4812.rounds[1] .categories[4].clues[4].question).to include("Ã", "¡")

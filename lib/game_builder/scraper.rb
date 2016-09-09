@@ -6,7 +6,7 @@ module GameBuilder
   class MissingRoundError < StandardError
   end
 
-  class JArchiveScraper
+  class Scraper
     J_MULTIPLIER = 100
     DJ_MULTIPLIER = 200
     attr_reader :game

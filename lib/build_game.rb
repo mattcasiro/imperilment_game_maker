@@ -1,5 +1,4 @@
 require 'game_builder/scraper'
-require 'game_builder/category'
 require 'game_builder/category_selector'
 
 class BuildGame
@@ -15,7 +14,7 @@ class BuildGame
     raise ArgumentError, "Incorrect number of user_paths" if user_paths &&
                                                              user_paths.size != num
     sources = []
-    scraper = GameBuilder::JArchiveScraper.new
+    scraper = GameBuilder::Scraper.new
     @games = (0...num).map do |i|
       # Add a unique game to the set
       tmp = next_game(scraper, i, user_paths)
