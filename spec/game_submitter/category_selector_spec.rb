@@ -1,60 +1,79 @@
 require 'game_submitter/category_selector'
+require 'game_builder/scraper'
 require 'constants'
 
 module GameSubmitter
-
   describe CategorySelector do
-
-    let(:game_1) { GameBuilder::Scraper.new.new_game!(FIXTURE_PATH + 'show_1_id_173_S1E1.html') }
-    let(:game_337) { GameBuilder::Scraper.new.new_game!(FIXTURE_PATH + 'show_337_id_4260.html') }
-    let(:game_383) { GameBuilder::Scraper.new.new_game!(FIXTURE_PATH + 'show_383_id_4279.html') }
-    let(:game_6474) { GameBuilder::Scraper.new.new_game!(FIXTURE_PATH + 'show_6474_id_4010.html') }
+    let(:scraper) { GameBuilder::Scraper.new }
+    let(:g_348) { scraper.new_game!(FIXTURE_PATH + 'show_348_id_4271.html') }
+    let(:g_383) { scraper.new_game!(FIXTURE_PATH + 'show_383_id_4279.html') }
 
     context "A round without any valid categories" do
-      it "should raise an ArgumentError" do
-        expect { CategorySelector.new(game_383.rounds[0]) }.to raise_error(ArgumentError)
+      let(:selector) { CategorySelector.new(g_383.rounds[0]) }
+
+      it "raises an error" do
+        expect { selector }.to raise_error(ArgumentError, /Round is not valid/)
       end
     end
 
-    context "A video daily double clue, but no link" do
-      let(:round) { CategorySelector.new(game_337.rounds[0]).round }
-
-      it("removes the clue") do
-        expect(round.categories[1].clues.size).to eql(4)
+    context "A round with some invalid categories" do
+      let(:round) { g_383.rounds[1] }
+      let(:ctgrys) { round.categories }
+      let(:expected) do
+        GameBuilder::Round.new([
+          GameBuilder::Category.new(ctgrys[0].name, ctgrys[0].clues[2..4]),
+          GameBuilder::Category.new(ctgrys[1].name, ctgrys[1].clues[2..4]),
+          GameBuilder::Category.new(ctgrys[4].name, ctgrys[4].clues),
+        ])
       end
-    end
 
-    context "A clue with a link in the answer" do
-      let(:round) { CategorySelector.new(game_6474.rounds[1]).round }
-
-      it("removes the clue") do
-        expect(round.categories[1].clues.size).to eql(3)
+      it "should reject the invalid categories" do
+        expect(CategorySelector.new(round).round).to eql(expected)
       end
     end
 
     describe "#category" do
-      context "Round[1] Category[0] of game 383" do
-        let(:category) { CategorySelector.new(game_383.rounds[1]).category(nil, 0) }
+      context "given round[1] of game 383" do
+        let(:round) { g_383.rounds[1] }
+        let(:cln) do
+          clnr = Cleaner.new
+          [
+            clnr.clean_category(round.categories[0]),
+            clnr.clean_category(round.categories[1]),
+            clnr.clean_category(round.categories[4]),
+          ]
+        end
+        subject { CategorySelector.new(round) }
 
-        it("should have 3 valid clues") { expect(category.clues.size).to eql(3) }
-        it("should correctly sort clues") { expect(category.clues.sort).to eql(category.clues) }
-
-        context "When excluding a category" do
-          it "should return a different category" do
-            expect(CategorySelector.new(game_383.rounds[1]).category(category, 0)).not_to eql(category)
-          end
-
-          it "should raise an error if no categories remain" do
-            expect { CategorySelector.new(GameBuilder::Round.new([category])).category(category) }.to raise_error(ArgumentError)
-          end
+        it "properly selects a valid category" do
+          expect(subject.category).to eql(cln[0]).or eql(cln[1]).or eql(cln[2])
+        end
+        it "allows manual selections" do
+          expect(subject.category(nil, 0)).to eql(cln[0])
+        end
+        it "correctly sorts clues" do
+          ctgry = subject.category(0)
+          expect(ctgry.clues.sort).to eql(ctgry.clues)
+        end
+        it "correctly excludes categories" do
+          rnd = GameBuilder::Round.new(round.categories[0..1])
+          selector = CategorySelector.new(rnd)
+          expect(selector.category(cln[0])).to eql(cln[1])
+        end
+        it "allows manual selection and exclusion" do
+          expect(subject.category(cln[1], 1)).to eql(cln[2])
         end
       end
-    end
 
-    describe "A clue with html tags and backspaces" do
-      let(:question) { CategorySelector.new(game_1.rounds[0]).category(nil, 0).clues[0].question }
+      context "given round[1] of game 348" do
+        let(:round) { g_348.rounds[1] }
+        let(:filter) { Cleaner.new.clean_category(round.categories[5]) }
+        subject { CategorySelector.new(round).category(filter) }
 
-      it { expect(question).to eq("the Jordan") }
+        it "should raise an error if no categories remain" do
+          expect {subject}.to raise_error(ArgumentError, /Not enough cat/)
+        end
+      end
     end
   end
 end
