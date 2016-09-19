@@ -6,3 +6,4 @@ gem 'nokogiri'
 gem 'whenever', :require => false
 gem 'vcr'
 gem 'webmock'
+gem 'activesupport'
