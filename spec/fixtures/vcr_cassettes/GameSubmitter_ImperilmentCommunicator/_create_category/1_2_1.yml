@@ -1,0 +1,478 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3000/users/sign_in
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:3000
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 6b8dbfe9-6666-4058-ab09-12a4c1717384
+      X-Runtime:
+      - '0.029917'
+      X-Miniprofiler-Ids:
+      - '["72bxc83mlwfkc77btsti"]'
+      Content-Length:
+      - '7177'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.9/2016-03-30)
+      Date:
+      - Mon, 19 Sep 2016 21:55:30 GMT
+      Connection:
+      - Keep-Alive
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      - _imperilment_session=b3hKaFVZc09GejlHYjljY0RtcWhQc3JNNmlVaFdkbDd5Y09xZW8wb3pHNUxVK2xHMXFkS3FmdmRHelMzcmJDanRTZEl1OUdDeUNvWENqMGRWbzM4MHBpckhTNkVBcEwxeVFOaUhlc2h0RW0zK3pLOXNIK202NVJaNC9QZzZ6dTFFdEVkeVZCOEtRQkR2RjJaTUVLRXFuakwwZXFXRWhDQWxNZXZsR3FDS3ZlV1Z0TTBoKzFqMnhkMXRnVmtsOThSLS14ejhYaXBTMmRuQTVyNG1iTE9hQjNnPT0%3D--bba177b26b73e95d7fd8b30d7d2c3641090c922d;
+        path=/; HttpOnly
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\n<html lang='en'>\n  <head>\n    <meta charset=\"utf-8\">\n
+        \   <title>Imperilment!</title>\n\n    <meta name=\"viewport\" content=\"width=device-width,
+        initial-scale=1.0\">\n    <meta name=\"description\" content=\"\">\n    <link
+        rel=\"manifest\" href=\"/manifest.json\">\n\n    <link rel=\"stylesheet\"
+        media=\"all\" href=\"/assets/application.css\" />\n    <meta name=\"csrf-param\"
+        content=\"authenticity_token\" />\n<meta name=\"csrf-token\" content=\"enogznQdhQKyXGipc71ZAHTDwwWWL/g0iYQPYbdExniX6R7fhadbNvVmsXK4672sfzpSTUjXwQJEzuv46Jia+A==\"
+        />\n  </head>\n  <body>\n    <nav class='navbar navbar-default navbar-fixed-top'>\n
+        \ <div class='container'>\n    <div class=\"navbar-header\">\n      <button
+        type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\"
+        data-target=\"#page-navbar-collapse\">\n        <span class=\"sr-only\">Toggle
+        navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span
+        class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n
+        \     <a class=\"navbar-brand\" href=\"/\"><svg xmlns=\"http://www.w3.org/2000/svg\"
+        height=\"14.5\" width=\"110\"><path d=\"M.002 14.498V0h3.773V14.5H0\"></path><path
+        d=\"M13.43 14.498V9.82h-.09c-.062 0-.11.014-.146.038-.036.024-.066.084-.09.18l-.704
+        4.333c-.024.086-.078.128-.163.128H9.89c-.084 0-.138-.042-.162-.127l-.704-4.33C9
+        9.94 8.97 9.88 8.934 9.857c-.036-.024-.085-.036-.145-.036H8.7v4.676H5.357V.002h2.547c.47
+        0 .853.108 1.155.325.3.216.5.577.596 1.082l1.3 7.67c.012.073.048.11.108.11.048
+        0 .084-.037.108-.11l1.3-7.67c.083-.507.276-.867.577-1.084C13.362.11 13.753
+        0 14.223 0h2.544v14.497h-3.34\"></path><path d=\"M23.607 6.518c0-.54-.277-.812-.83-.812h-.867v3.23h.795c.6
+        0 .9-.245.9-.74V6.52m-5.305 7.98V.002h6.842c.373 0 .68.03.92.09.242.062.433.182.578.362.145.17.242.41.29.722.06.314.09.722.09
+        1.228v6.534c0 .398-.03.723-.09.976-.048.252-.134.445-.254.577-.12.133-.284.224-.488.272-.193.048-.433.072-.722.072H21.91v3.664H18.3\"></path><path
+        d=\"M29.582 14.498c-.578 0-.974-.103-1.192-.306-.217-.218-.325-.61-.325-1.175V2.404c0-.505.03-.914.09-1.227.06-.325.163-.572.306-.74.158-.17.375-.282.652-.343.277-.06.632-.09
+        1.065-.09h6.084v5.704h-4.17c-.36 0-.54.17-.54.505V8.47c0 .313.155.47.468.47h4.153v1.894H32.02c-.314
+        0-.47.194-.47.58v.612c0 .374.188.56.56.56h4.153V14.5h-6.678\"></path><path
+        d=\"M44.12 14.498c-.6 0-.902-.282-.902-.85V11.79c0-.387-.18-.578-.54-.578h-1.554v3.286h-3.502V0h6.896c.41
+        0 .74.03.993.093.266.06.47.173.615.342.143.17.24.41.288.722.06.314.09.73.09
+        1.247v6.01c0 .555-.102.946-.306 1.174-.205.23-.555.373-1.048.433.24.026.445.067.613.128.18.048.325.132.434.252.108.12.186.28.234.487.05.192.073.438.073.74v2.165c0
+        .205.03.355.09.452.06.097.15.18.27.253h-2.742m-.902-8.323c0-.312-.145-.47-.433-.47h-1.66V9.3h1.553c.36
+        0 .54-.102.54-.306V6.175\"></path><path d=\"M48.026 14.498V0H51.8V14.5h-3.774\"></path><path
+        d=\"M53.383 14.498V0h3.574v12.024c0 .374.187.56.56.56h.344c.374 0 .56-.186.56-.56V8.94h3.43v5.56h-8.467\"></path><path
+        d=\"M71.114 14.498V9.82h-.09c-.06 0-.11.014-.145.038-.037.024-.067.084-.09.18l-.705
+        4.333c-.024.086-.078.128-.162.128h-2.347c-.084 0-.14-.042-.163-.127l-.704-4.33c-.025-.098-.055-.158-.09-.182-.037-.024-.085-.036-.146-.036h-.09v4.676h-3.34V.002h2.546c.468
+        0 .853.108 1.155.325.3.216.5.577.595 1.082l1.3 7.67c.01.073.048.11.108.11.048
+        0 .084-.037.108-.11l1.3-7.67c.083-.507.276-.867.577-1.084C71.047.11 71.437
+        0 71.908 0h2.544v14.497h-3.34\"></path><path d=\"M77.43 14.498c-.58 0-.976-.103-1.192-.306-.217-.218-.325-.61-.325-1.175V2.404c0-.505.03-.914.09-1.227.06-.325.163-.572.306-.74.156-.17.373-.282.65-.343.276-.06.63-.09
+        1.065-.09h6.083v5.704h-4.17c-.362 0-.54.17-.54.505V8.47c0 .313.156.47.47.47h4.15v1.894h-4.15c-.315
+        0-.47.194-.47.58v.612c0 .374.187.56.56.56h4.152V14.5h-6.68\"></path><path
+        d=\"M91.933 14.498c-.433 0-.753-.078-.958-.235-.204-.17-.354-.446-.45-.83l-.867-3.322c-.06-.228-.2-.342-.415-.342h-.29v4.73H85.47V0h2.78c.456
+        0 .81.116 1.064.345.253.218.427.53.523.94l1.788 8.303c.012.084.054.126.127.126h.054V.002h3.447V14.5h-3.32\"></path><path
+        d=\"M98.9 14.498v-8.25c0-.362-.198-.542-.595-.542H96.21V.002h8.756v5.704h-2.094c-.23
+        0-.385.048-.47.145-.084.085-.126.218-.126.398v8.25H98.9\"></path><path d=\"M106.136
+        14.498v-2.095H110v2.095h-3.864m0-3.124V0H110v11.374h-3.864\"></path></svg>\n</a>\n
+        \   </div>\n\n    <div class=\"collapse navbar-collapse\" id=\"page-navbar-collapse\">\n
+        \     <ul class=\"nav navbar-nav\">\n        <li><a href=\"/\">Home</a></li>\n
+        \       <li><a href=\"/leader_board\">Leader Board</a></li>\n      </ul>\n\n
+        \     <div class='nav navbar-nav navbar-right'>\n        <li>\n          \n
+        \       </li>\n        <li class=\"dropdown\">\n            <a class=\"btn-link\"
+        href=\"/users/sign_in\">\n    <i class=\"icon-user\"></i> \n    Log in\n</a>\n
+        \       </li>\n      </div>\n    </div><!-- /.navbar-collapse -->\n  </div><!--
+        /.container-fluid -->\n</nav>\n\n    <div class='container'>\n      <div class='flash'>\n
+        \       \n        \n      </div>\n      <div class='breadcrumbs'>\n        \n
+        \     </div>\n      <div class='content'>\n          <div class='row'>\n    <div
+        class='col-md-6 offset3'>\n      <h2>Sign in</h2>\n\n<form novalidate=\"novalidate\"
+        class=\"simple_form new_user\" id=\"new_user\" action=\"/users/sign_in\" accept-charset=\"UTF-8\"
+        method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input
+        type=\"hidden\" name=\"authenticity_token\" value=\"g1VvOvCFJUTIC73+XgW5lhtwjrWKm+aIqCR8n4QDKWRuxlErAT/7cI8xZCWVU106EIkf/VRj375lbpgG29915A==\"
+        />\n\n  <div class=\"form-group email optional user_email\"><label class=\"email
+        optional control-label\" for=\"user_email\">Email</label><input class=\"string
+        email optional form-control\" autofocus=\"autofocus\" type=\"email\" value=\"\"
+        name=\"user[email]\" id=\"user_email\" /></div>\n  <div class=\"form-group
+        password optional user_password\"><label class=\"password optional control-label\"
+        for=\"user_password\">Password</label><input class=\"password optional form-control\"
+        type=\"password\" name=\"user[password]\" id=\"user_password\" /></div>\n
+        \ <div class=\"form-group boolean optional user_remember_me\"><label class=\"boolean
+        optional control-label\" for=\"user_remember_me\">Remember me</label><input
+        value=\"0\" type=\"hidden\" name=\"user[remember_me]\" /><label><input class=\"boolean
+        optional form-control\" type=\"checkbox\" value=\"1\" name=\"user[remember_me]\"
+        id=\"user_remember_me\" /></label></div>\n\n  <input type=\"submit\" name=\"commit\"
+        value=\"Sign in\" class=\"btn btn-default\" />\n</form>\n\n  <a href=\"/users/sign_up\">Sign
+        up</a><br />\n\n  <a href=\"/users/password/new\">Forgot your password?</a><br
+        />\n\n\n\n    <a href=\"/users/auth/google\">Sign in with Google</a><br />\n\n\n
+        \   </div>\n  </div>\n\n      </div>\n      <footer>\n        <p>&copy; 2016
+        FreeRunning Technologies</p>\n      </footer>\n    </div>\n    <script src=\"/assets/application.js\"
+        async=\"async\"></script>\n  <script async type=\"text/javascript\" id=\"mini-profiler\"
+        src=\"/mini-profiler-resources/includes.js?v=e0e50f551fa464f9d95c2e082bb2d45b\"
+        data-version=\"e0e50f551fa464f9d95c2e082bb2d45b\" data-path=\"/mini-profiler-resources/\"
+        data-current-id=\"72bxc83mlwfkc77btsti\" data-ids=\"72bxc83mlwfkc77btsti\"
+        data-position=\"left\" data-trivial=\"false\" data-children=\"false\" data-max-traces=\"10\"
+        data-controls=\"false\" data-authorized=\"true\" data-toggle-shortcut=\"Alt+P\"
+        data-start-hidden=\"false\"></script>\n</body>\n</html>\n\n"
+    http_version: 
+  recorded_at: Mon, 19 Sep 2016 21:55:30 GMT
+- request:
+    method: post
+    uri: http://localhost:3000/users/sign_in
+    body:
+      encoding: US-ASCII
+      string: authenticity_token=enogznQdhQKyXGipc71ZAHTDwwWWL%2Fg0iYQPYbdExniX6R7fhadbNvVmsXK4672sfzpSTUjXwQJEzuv46Jia%2BA%3D%3D&user%5Bemail%5D=admin%40example.com&user%5Bpassword%5D=test123&user%5Bremember_me%5D=1&commit=Sign+in
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:3000
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Cookie:
+      - _imperilment_session=b3hKaFVZc09GejlHYjljY0RtcWhQc3JNNmlVaFdkbDd5Y09xZW8wb3pHNUxVK2xHMXFkS3FmdmRHelMzcmJDanRTZEl1OUdDeUNvWENqMGRWbzM4MHBpckhTNkVBcEwxeVFOaUhlc2h0RW0zK3pLOXNIK202NVJaNC9QZzZ6dTFFdEVkeVZCOEtRQkR2RjJaTUVLRXFuakwwZXFXRWhDQWxNZXZsR3FDS3ZlV1Z0TTBoKzFqMnhkMXRnVmtsOThSLS14ejhYaXBTMmRuQTVyNG1iTE9hQjNnPT0%3D--bba177b26b73e95d7fd8b30d7d2c3641090c922d;
+        path=/; HttpOnly, __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/
+  response:
+    status:
+      code: 302
+      message: 'Found '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Location:
+      - http://localhost:3000/
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - c420850c-5520-47dc-a381-3a72dbfd825d
+      X-Runtime:
+      - '0.135699'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.9/2016-03-30)
+      Date:
+      - Mon, 19 Sep 2016 21:55:31 GMT
+      Content-Length:
+      - '88'
+      Connection:
+      - Keep-Alive
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      - _imperilment_session=NkE4VUpIcWR0TVNqTytZZ3JzakNyUEhwM1hRRnZsdXg1cGRpMC8yOUo0TU85U1Y4Ymh3WjM4VlM1VnMxVVFOOHp3VWJHMytFN29BM0hJeXNvY25Yd2tQQytLVkhxM1d4UmxjTFVsYWlDU200V0FzUnlLYVZ4cTlsR0xJM24zUXpHU3o4MEEvM0d2U0RLS3lDaXhxcVFHOThLWVRTNWlGbXJDMzlvcWVWd1pscXUvVWlpZlNNVTN1aUdZUkZtWlE3R2RJYitpK1Q3RE9IaW1zSTJKOTFBY3hjdzNsL2xrbVloaHhnTXpUSWNyNzhwRFhnV05DWjR6ZitvekNNdEh4NHhiY3RWdmVuOWJkL1IyZWhmZ3prVnI1WkwzTEV6Nk5OSGovaTYzZUMyQzA9LS1KMXhUZVNQYmVXZGdDdngySjdzbWFRPT0%3D--40c4f464d6ddb689f250b459f79bcd0e8800e3b0;
+        path=/; HttpOnly
+      - remember_user_token=BAhbB1sGaQZJIiIkMmEkMTAkbk53bXFxMm9rLjFTZjZsanZDTWNqLgY6BkVU--28c2cdd0bf99d97d219cc0b88ac7218b4c57d0f6;
+        path=/; expires=Mon, 03 Oct 2016 17:04:03 -0000; HttpOnly
+    body:
+      encoding: UTF-8
+      string: <html><body>You are being <a href="http://localhost:3000/">redirected</a>.</body></html>
+    http_version: 
+  recorded_at: Mon, 19 Sep 2016 21:55:31 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/categories/new
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:3000
+      Cookie:
+      - remember_user_token=BAhbB1sGaQZJIiIkMmEkMTAkbk53bXFxMm9rLjFTZjZsanZDTWNqLgY6BkVU--28c2cdd0bf99d97d219cc0b88ac7218b4c57d0f6;
+        path=/; expires=Mon, 03 Oct 2016 17:04:03 -0000; HttpOnly, _imperilment_session=NkE4VUpIcWR0TVNqTytZZ3JzakNyUEhwM1hRRnZsdXg1cGRpMC8yOUo0TU85U1Y4Ymh3WjM4VlM1VnMxVVFOOHp3VWJHMytFN29BM0hJeXNvY25Yd2tQQytLVkhxM1d4UmxjTFVsYWlDU200V0FzUnlLYVZ4cTlsR0xJM24zUXpHU3o4MEEvM0d2U0RLS3lDaXhxcVFHOThLWVRTNWlGbXJDMzlvcWVWd1pscXUvVWlpZlNNVTN1aUdZUkZtWlE3R2RJYitpK1Q3RE9IaW1zSTJKOTFBY3hjdzNsL2xrbVloaHhnTXpUSWNyNzhwRFhnV05DWjR6ZitvekNNdEh4NHhiY3RWdmVuOWJkL1IyZWhmZ3prVnI1WkwzTEV6Nk5OSGovaTYzZUMyQzA9LS1KMXhUZVNQYmVXZGdDdngySjdzbWFRPT0%3D--40c4f464d6ddb689f250b459f79bcd0e8800e3b0;
+        path=/; HttpOnly, __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - fa432068-45e7-4a37-8992-ae6c0c007e96
+      X-Runtime:
+      - '0.037061'
+      X-Miniprofiler-Ids:
+      - '["m34nd2myuiqlbo0elyro","72bxc83mlwfkc77btsti","lfeg9flzb1jewd2edto"]'
+      Content-Length:
+      - '7323'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.9/2016-03-30)
+      Date:
+      - Mon, 19 Sep 2016 21:55:31 GMT
+      Connection:
+      - Keep-Alive
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      - _imperilment_session=RVhwRFY5WHFpcUlHR0FVTlRQNmNLUUlPSDhad09acHBpZmNMVC83dll1Mjl6RmcwTVcyRlltellqeUUvNlk4RXJLLzZtTCtWV3oyL0kyRWtTRVRub2RpSk92NjhBY0ZzSFUrY1N5Szg0RkVCMldiNnBYeEtiMUluN2FkU3czYnFFcFE3UnJlZ1NYa1lHUG8xTU9QRFNMS0Y4NFBGYXFXT0k1eE41SUtac0VITGoxWndNQ0RxbEhGMUYyME5nekcxM1lMNmd1UDROVVNNZkpadUxDZ3Qwa0RDRU9IaE9YbVUyaXNYNGEwL2ovaGFmZ2dnQTVnVnptL3RlWnNMRmE2blNWUXpVTUJ3RHFUUjVFaWM4L2dEK3BwT29xc1JvVGhWL0g2YWFtaUhDbnliVUh4TlNGOTlBVG1mRE5iSWRSYW1BRXVNdm94Z2p3THpISjFRb21JNTRnc3JGcS9IVTRjRERTWHF3am1LWjJpK0Zmc3pRV0p2Y3VrdnFHL0tQLzh6UnhZRGpXMjc2N0Q5dkYzQUZ5b2pBUT09LS14U3UvSERLek00RTFOc1lWWFNNY0J3PT0%3D--2ef19fe03d51343129cd82ab9d0b7daef4f88cd4;
+        path=/; HttpOnly
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9J2VuJz4KICA8aGVhZD4KICAg
+        IDxtZXRhIGNoYXJzZXQ9InV0Zi04Ij4KICAgIDx0aXRsZT5JbXBlcmlsbWVu
+        dCE8L3RpdGxlPgoKICAgIDxtZXRhIG5hbWU9InZpZXdwb3J0IiBjb250ZW50
+        PSJ3aWR0aD1kZXZpY2Utd2lkdGgsIGluaXRpYWwtc2NhbGU9MS4wIj4KICAg
+        IDxtZXRhIG5hbWU9ImRlc2NyaXB0aW9uIiBjb250ZW50PSIiPgogICAgPGxp
+        bmsgcmVsPSJtYW5pZmVzdCIgaHJlZj0iL21hbmlmZXN0Lmpzb24iPgoKICAg
+        IDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgbWVkaWE9ImFsbCIgaHJlZj0iL2Fz
+        c2V0cy9hcHBsaWNhdGlvbi5jc3MiIC8+CiAgICA8bWV0YSBuYW1lPSJjc3Jm
+        LXBhcmFtIiBjb250ZW50PSJhdXRoZW50aWNpdHlfdG9rZW4iIC8+CjxtZXRh
+        IG5hbWU9ImNzcmYtdG9rZW4iIGNvbnRlbnQ9IkRBYXREbGJxZFlQS2hGbFlE
+        ckNwaWZ3eVQveU5YVy9pSy9RVTBTdTRrbEZWTDBZK2N2NkFOTUw0R0pLVTF1
+        L1d3Ym9URTA0aS93aWF0ZkNjNFZrNE5RPT0iIC8+CiAgPC9oZWFkPgogIDxi
+        b2R5PgogICAgPG5hdiBjbGFzcz0nbmF2YmFyIG5hdmJhci1kZWZhdWx0IG5h
+        dmJhci1maXhlZC10b3AnPgogIDxkaXYgY2xhc3M9J2NvbnRhaW5lcic+CiAg
+        ICA8ZGl2IGNsYXNzPSJuYXZiYXItaGVhZGVyIj4KICAgICAgPGJ1dHRvbiB0
+        eXBlPSJidXR0b24iIGNsYXNzPSJuYXZiYXItdG9nZ2xlIGNvbGxhcHNlZCIg
+        ZGF0YS10b2dnbGU9ImNvbGxhcHNlIiBkYXRhLXRhcmdldD0iI3BhZ2UtbmF2
+        YmFyLWNvbGxhcHNlIj4KICAgICAgICA8c3BhbiBjbGFzcz0ic3Itb25seSI+
+        VG9nZ2xlIG5hdmlnYXRpb248L3NwYW4+CiAgICAgICAgPHNwYW4gY2xhc3M9
+        Imljb24tYmFyIj48L3NwYW4+CiAgICAgICAgPHNwYW4gY2xhc3M9Imljb24t
+        YmFyIj48L3NwYW4+CiAgICAgICAgPHNwYW4gY2xhc3M9Imljb24tYmFyIj48
+        L3NwYW4+CiAgICAgIDwvYnV0dG9uPgogICAgICA8YSBjbGFzcz0ibmF2YmFy
+        LWJyYW5kIiBocmVmPSIvIj48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9y
+        Zy8yMDAwL3N2ZyIgaGVpZ2h0PSIxNC41IiB3aWR0aD0iMTEwIj48cGF0aCBk
+        PSJNLjAwMiAxNC40OThWMGgzLjc3M1YxNC41SDAiPjwvcGF0aD48cGF0aCBk
+        PSJNMTMuNDMgMTQuNDk4VjkuODJoLS4wOWMtLjA2MiAwLS4xMS4wMTQtLjE0
+        Ni4wMzgtLjAzNi4wMjQtLjA2Ni4wODQtLjA5LjE4bC0uNzA0IDQuMzMzYy0u
+        MDI0LjA4Ni0uMDc4LjEyOC0uMTYzLjEyOEg5Ljg5Yy0uMDg0IDAtLjEzOC0u
+        MDQyLS4xNjItLjEyN2wtLjcwNC00LjMzQzkgOS45NCA4Ljk3IDkuODggOC45
+        MzQgOS44NTdjLS4wMzYtLjAyNC0uMDg1LS4wMzYtLjE0NS0uMDM2SDguN3Y0
+        LjY3Nkg1LjM1N1YuMDAyaDIuNTQ3Yy40NyAwIC44NTMuMTA4IDEuMTU1LjMy
+        NS4zLjIxNi41LjU3Ny41OTYgMS4wODJsMS4zIDcuNjdjLjAxMi4wNzMuMDQ4
+        LjExLjEwOC4xMS4wNDggMCAuMDg0LS4wMzcuMTA4LS4xMWwxLjMtNy42N2Mu
+        MDgzLS41MDcuMjc2LS44NjcuNTc3LTEuMDg0QzEzLjM2Mi4xMSAxMy43NTMg
+        MCAxNC4yMjMgMGgyLjU0NHYxNC40OTdoLTMuMzQiPjwvcGF0aD48cGF0aCBk
+        PSJNMjMuNjA3IDYuNTE4YzAtLjU0LS4yNzctLjgxMi0uODMtLjgxMmgtLjg2
+        N3YzLjIzaC43OTVjLjYgMCAuOS0uMjQ1LjktLjc0VjYuNTJtLTUuMzA1IDcu
+        OThWLjAwMmg2Ljg0MmMuMzczIDAgLjY4LjAzLjkyLjA5LjI0Mi4wNjIuNDMz
+        LjE4Mi41NzguMzYyLjE0NS4xNy4yNDIuNDEuMjkuNzIyLjA2LjMxNC4wOS43
+        MjIuMDkgMS4yMjh2Ni41MzRjMCAuMzk4LS4wMy43MjMtLjA5Ljk3Ni0uMDQ4
+        LjI1Mi0uMTM0LjQ0NS0uMjU0LjU3Ny0uMTIuMTMzLS4yODQuMjI0LS40ODgu
+        MjcyLS4xOTMuMDQ4LS40MzMuMDcyLS43MjIuMDcySDIxLjkxdjMuNjY0SDE4
+        LjMiPjwvcGF0aD48cGF0aCBkPSJNMjkuNTgyIDE0LjQ5OGMtLjU3OCAwLS45
+        NzQtLjEwMy0xLjE5Mi0uMzA2LS4yMTctLjIxOC0uMzI1LS42MS0uMzI1LTEu
+        MTc1VjIuNDA0YzAtLjUwNS4wMy0uOTE0LjA5LTEuMjI3LjA2LS4zMjUuMTYz
+        LS41NzIuMzA2LS43NC4xNTgtLjE3LjM3NS0uMjgyLjY1Mi0uMzQzLjI3Ny0u
+        MDYuNjMyLS4wOSAxLjA2NS0uMDloNi4wODR2NS43MDRoLTQuMTdjLS4zNiAw
+        LS41NC4xNy0uNTQuNTA1VjguNDdjMCAuMzEzLjE1NS40Ny40NjguNDdoNC4x
+        NTN2MS44OTRIMzIuMDJjLS4zMTQgMC0uNDcuMTk0LS40Ny41OHYuNjEyYzAg
+        LjM3NC4xODguNTYuNTYuNTZoNC4xNTNWMTQuNWgtNi42NzgiPjwvcGF0aD48
+        cGF0aCBkPSJNNDQuMTIgMTQuNDk4Yy0uNiAwLS45MDItLjI4Mi0uOTAyLS44
+        NVYxMS43OWMwLS4zODctLjE4LS41NzgtLjU0LS41NzhoLTEuNTU0djMuMjg2
+        aC0zLjUwMlYwaDYuODk2Yy40MSAwIC43NC4wMy45OTMuMDkzLjI2Ni4wNi40
+        Ny4xNzMuNjE1LjM0Mi4xNDMuMTcuMjQuNDEuMjg4LjcyMi4wNi4zMTQuMDku
+        NzMuMDkgMS4yNDd2Ni4wMWMwIC41NTUtLjEwMi45NDYtLjMwNiAxLjE3NC0u
+        MjA1LjIzLS41NTUuMzczLTEuMDQ4LjQzMy4yNC4wMjYuNDQ1LjA2Ny42MTMu
+        MTI4LjE4LjA0OC4zMjUuMTMyLjQzNC4yNTIuMTA4LjEyLjE4Ni4yOC4yMzQu
+        NDg3LjA1LjE5Mi4wNzMuNDM4LjA3My43NHYyLjE2NWMwIC4yMDUuMDMuMzU1
+        LjA5LjQ1Mi4wNi4wOTcuMTUuMTguMjcuMjUzaC0yLjc0Mm0tLjkwMi04LjMy
+        M2MwLS4zMTItLjE0NS0uNDctLjQzMy0uNDdoLTEuNjZWOS4zaDEuNTUzYy4z
+        NiAwIC41NC0uMTAyLjU0LS4zMDZWNi4xNzUiPjwvcGF0aD48cGF0aCBkPSJN
+        NDguMDI2IDE0LjQ5OFYwSDUxLjhWMTQuNWgtMy43NzQiPjwvcGF0aD48cGF0
+        aCBkPSJNNTMuMzgzIDE0LjQ5OFYwaDMuNTc0djEyLjAyNGMwIC4zNzQuMTg3
+        LjU2LjU2LjU2aC4zNDRjLjM3NCAwIC41Ni0uMTg2LjU2LS41NlY4Ljk0aDMu
+        NDN2NS41NmgtOC40NjciPjwvcGF0aD48cGF0aCBkPSJNNzEuMTE0IDE0LjQ5
+        OFY5LjgyaC0uMDljLS4wNiAwLS4xMS4wMTQtLjE0NS4wMzgtLjAzNy4wMjQt
+        LjA2Ny4wODQtLjA5LjE4bC0uNzA1IDQuMzMzYy0uMDI0LjA4Ni0uMDc4LjEy
+        OC0uMTYyLjEyOGgtMi4zNDdjLS4wODQgMC0uMTQtLjA0Mi0uMTYzLS4xMjds
+        LS43MDQtNC4zM2MtLjAyNS0uMDk4LS4wNTUtLjE1OC0uMDktLjE4Mi0uMDM3
+        LS4wMjQtLjA4NS0uMDM2LS4xNDYtLjAzNmgtLjA5djQuNjc2aC0zLjM0Vi4w
+        MDJoMi41NDZjLjQ2OCAwIC44NTMuMTA4IDEuMTU1LjMyNS4zLjIxNi41LjU3
+        Ny41OTUgMS4wODJsMS4zIDcuNjdjLjAxLjA3My4wNDguMTEuMTA4LjExLjA0
+        OCAwIC4wODQtLjAzNy4xMDgtLjExbDEuMy03LjY3Yy4wODMtLjUwNy4yNzYt
+        Ljg2Ny41NzctMS4wODRDNzEuMDQ3LjExIDcxLjQzNyAwIDcxLjkwOCAwaDIu
+        NTQ0djE0LjQ5N2gtMy4zNCI+PC9wYXRoPjxwYXRoIGQ9Ik03Ny40MyAxNC40
+        OThjLS41OCAwLS45NzYtLjEwMy0xLjE5Mi0uMzA2LS4yMTctLjIxOC0uMzI1
+        LS42MS0uMzI1LTEuMTc1VjIuNDA0YzAtLjUwNS4wMy0uOTE0LjA5LTEuMjI3
+        LjA2LS4zMjUuMTYzLS41NzIuMzA2LS43NC4xNTYtLjE3LjM3My0uMjgyLjY1
+        LS4zNDMuMjc2LS4wNi42My0uMDkgMS4wNjUtLjA5aDYuMDgzdjUuNzA0aC00
+        LjE3Yy0uMzYyIDAtLjU0LjE3LS41NC41MDVWOC40N2MwIC4zMTMuMTU2LjQ3
+        LjQ3LjQ3aDQuMTV2MS44OTRoLTQuMTVjLS4zMTUgMC0uNDcuMTk0LS40Ny41
+        OHYuNjEyYzAgLjM3NC4xODcuNTYuNTYuNTZoNC4xNTJWMTQuNWgtNi42OCI+
+        PC9wYXRoPjxwYXRoIGQ9Ik05MS45MzMgMTQuNDk4Yy0uNDMzIDAtLjc1My0u
+        MDc4LS45NTgtLjIzNS0uMjA0LS4xNy0uMzU0LS40NDYtLjQ1LS44M2wtLjg2
+        Ny0zLjMyMmMtLjA2LS4yMjgtLjItLjM0Mi0uNDE1LS4zNDJoLS4yOXY0Ljcz
+        SDg1LjQ3VjBoMi43OGMuNDU2IDAgLjgxLjExNiAxLjA2NC4zNDUuMjUzLjIx
+        OC40MjcuNTMuNTIzLjk0bDEuNzg4IDguMzAzYy4wMTIuMDg0LjA1NC4xMjYu
+        MTI3LjEyNmguMDU0Vi4wMDJoMy40NDdWMTQuNWgtMy4zMiI+PC9wYXRoPjxw
+        YXRoIGQ9Ik05OC45IDE0LjQ5OHYtOC4yNWMwLS4zNjItLjE5OC0uNTQyLS41
+        OTUtLjU0Mkg5Ni4yMVYuMDAyaDguNzU2djUuNzA0aC0yLjA5NGMtLjIzIDAt
+        LjM4NS4wNDgtLjQ3LjE0NS0uMDg0LjA4NS0uMTI2LjIxOC0uMTI2LjM5OHY4
+        LjI1SDk4LjkiPjwvcGF0aD48cGF0aCBkPSJNMTA2LjEzNiAxNC40OTh2LTIu
+        MDk1SDExMHYyLjA5NWgtMy44NjRtMC0zLjEyNFYwSDExMHYxMS4zNzRoLTMu
+        ODY0Ij48L3BhdGg+PC9zdmc+CjwvYT4KICAgIDwvZGl2PgoKICAgIDxkaXYg
+        Y2xhc3M9ImNvbGxhcHNlIG5hdmJhci1jb2xsYXBzZSIgaWQ9InBhZ2UtbmF2
+        YmFyLWNvbGxhcHNlIj4KICAgICAgPHVsIGNsYXNzPSJuYXYgbmF2YmFyLW5h
+        diI+CiAgICAgICAgPGxpPjxhIGhyZWY9Ii8iPkhvbWU8L2E+PC9saT4KICAg
+        ICAgICA8bGk+PGEgaHJlZj0iL2xlYWRlcl9ib2FyZCI+TGVhZGVyIEJvYXJk
+        PC9hPjwvbGk+CiAgICAgICAgICA8bGk+PGEgaHJlZj0iL2FkbWluL3VzZXJz
+        Ij5Vc2VyczwvYT48L2xpPgogICAgICAgICAgPGxpPjxhIGhyZWY9Ii9nYW1l
+        cyI+R2FtZXM8L2E+PC9saT4KICAgICAgICAgIDxsaT48YSBocmVmPSIvY2F0
+        ZWdvcmllcyI+Q2F0ZWdvcmllczwvYT48L2xpPgogICAgICAgICAgPGxpPjxh
+        IGhyZWY9Ii93ZWJfaG9va3MiPldlYiBIb29rczwvYT48L2xpPgogICAgICA8
+        L3VsPgoKICAgICAgPGRpdiBjbGFzcz0nbmF2IG5hdmJhci1uYXYgbmF2YmFy
+        LXJpZ2h0Jz4KICAgICAgICA8bGk+CiAgICAgICAgICAgICAgPGEgaHJlZj0i
+        LyI+CiAgICAgIDxzcGFuIGNsYXNzPSJsYWJlbCBsYWJlbC1wcmltYXJ5Ij4y
+        PC9zcGFuPgogICAgPC9hPgogIDwvbGk+CgogICAgICAgIDwvbGk+CiAgICAg
+        ICAgPGxpIGNsYXNzPSJkcm9wZG93biI+CiAgICAgICAgICAgIDxhIGNsYXNz
+        PSdidG4tbGluayBkcm9wZG93bi10b2dnbGUnIGhyZWY9JyMnIGRhdGEtdG9n
+        Z2xlPSdkcm9wZG93bic+CiAgICA8aSBjbGFzcz0iaWNvbi11c2VyIj48L2k+
+        IAogICAgYWRtaW5AZXhhbXBsZS5jb20KICAgIDxzcGFuIGNsYXNzPSdjYXJl
+        dCc+PC9zcGFuPgogIDwvYT4KICA8dWwgY2xhc3M9J2Ryb3Bkb3duLW1lbnUn
+        PgogICAgICA8bGk+CiAgICAgICAgPGEgaHJlZj0iL3VzZXJzL2VkaXQiPgog
+        ICAgICAgICAgPGkgY2xhc3M9Imljb24tY29nIj48L2k+IAogICAgICAgICAg
+        UHJlZmVyZW5jZXMKPC9hPiAgICAgIDwvbGk+CiAgICAgIDxsaSBjbGFzcz0n
+        ZGl2aWRlcic+PC9saT4KICAgIDxsaT4KICAgICAgPGEgcmVsPSJub2ZvbGxv
+        dyIgZGF0YS1tZXRob2Q9ImRlbGV0ZSIgaHJlZj0iL3VzZXJzL3NpZ25fb3V0
+        Ij4KICAgICAgICA8aSBjbGFzcz0iaWNvbi1vZmYiPjwvaT4gCiAgICAgICAg
+        U2lnbiBvdXQKPC9hPiAgICA8L2xpPgogIDwvdWw+CgogICAgICAgIDwvbGk+
+        CiAgICAgIDwvZGl2PgogICAgPC9kaXY+PCEtLSAvLm5hdmJhci1jb2xsYXBz
+        ZSAtLT4KICA8L2Rpdj48IS0tIC8uY29udGFpbmVyLWZsdWlkIC0tPgo8L25h
+        dj4KCiAgICA8ZGl2IGNsYXNzPSdjb250YWluZXInPgogICAgICA8ZGl2IGNs
+        YXNzPSdmbGFzaCc+CiAgICAgICAgPGRpdiBjbGFzcz0iYWxlcnQgYWxlcnQt
+        YmxvY2sgYWxlcnQtc3VjY2VzcyBmYWRlIGluIj48YnV0dG9uIG5hbWU9ImJ1
+        dHRvbiIgdHlwZT0iYnV0dG9uIiBjbGFzcz0iY2xvc2UiIGRhdGEtZGlzbWlz
+        cz0iYWxlcnQiPsOXPC9idXR0b24+PGg0IGNsYXNzPSJhbGVydC1oZWFkaW5n
+        Ij5Ob3RpY2U8L2g0PjxwPlNpZ25lZCBpbiBzdWNjZXNzZnVsbHkuPC9wPjwv
+        ZGl2PgogICAgICAgIAogICAgICA8L2Rpdj4KICAgICAgPGRpdiBjbGFzcz0n
+        YnJlYWRjcnVtYnMnPgogICAgICAgIAogICAgICA8L2Rpdj4KICAgICAgPGRp
+        diBjbGFzcz0nY29udGVudCc+CiAgICAgICAgPGgxPk5ldyBDYXRlZ29yeTwv
+        aDE+Cgo8Zm9ybSBub3ZhbGlkYXRlPSJub3ZhbGlkYXRlIiBjbGFzcz0ic2lt
+        cGxlX2Zvcm0gbmV3X2NhdGVnb3J5IiBpZD0ibmV3X2NhdGVnb3J5IiBhY3Rp
+        b249Ii9jYXRlZ29yaWVzIiBhY2NlcHQtY2hhcnNldD0iVVRGLTgiIG1ldGhv
+        ZD0icG9zdCI+PGlucHV0IG5hbWU9InV0ZjgiIHR5cGU9ImhpZGRlbiIgdmFs
+        dWU9IiYjeDI3MTM7IiAvPjxpbnB1dCB0eXBlPSJoaWRkZW4iIG5hbWU9ImF1
+        dGhlbnRpY2l0eV90b2tlbiIgdmFsdWU9IlY2KzhPc0VxdzNKNjdXTG84QVZi
+        Z2M2TzZlVGdDMWFHaWxMTVFNek50aE1PaGxjSzVUNDJ4WEtSSXlKcVl4M2U4
+        d2ExQ3lOMHhtdzdFeWdOQml3Y2R3PT0iIC8+CiAgCgogIDxkaXYgY2xhc3M9
+        ImZvcm0tZ3JvdXAgc3RyaW5nIG9wdGlvbmFsIGNhdGVnb3J5X25hbWUiPjxs
+        YWJlbCBjbGFzcz0ic3RyaW5nIG9wdGlvbmFsIGNvbnRyb2wtbGFiZWwiIGZv
+        cj0iY2F0ZWdvcnlfbmFtZSI+TmFtZTwvbGFiZWw+PGlucHV0IGNsYXNzPSJz
+        dHJpbmcgb3B0aW9uYWwgZm9ybS1jb250cm9sIiB0eXBlPSJ0ZXh0IiBuYW1l
+        PSJjYXRlZ29yeVtuYW1lXSIgaWQ9ImNhdGVnb3J5X25hbWUiIC8+PC9kaXY+
+        CgogIDxpbnB1dCB0eXBlPSJzdWJtaXQiIG5hbWU9ImNvbW1pdCIgdmFsdWU9
+        IkNyZWF0ZSBDYXRlZ29yeSIgY2xhc3M9ImJ0biBidG4tZGVmYXVsdCBidG4g
+        YnRuLXByaW1hcnkiIC8+CjwvZm9ybT4KCjxhIGNsYXNzPSJidG4gYnRuLWRl
+        ZmF1bHQiIGhyZWY9Ii9jYXRlZ29yaWVzIj5CYWNrPC9hPgoKICAgICAgPC9k
+        aXY+CiAgICAgIDxmb290ZXI+CiAgICAgICAgPHA+JmNvcHk7IDIwMTYgRnJl
+        ZVJ1bm5pbmcgVGVjaG5vbG9naWVzPC9wPgogICAgICA8L2Zvb3Rlcj4KICAg
+        IDwvZGl2PgogICAgPHNjcmlwdCBzcmM9Ii9hc3NldHMvYXBwbGljYXRpb24u
+        anMiIGFzeW5jPSJhc3luYyI+PC9zY3JpcHQ+CiAgPHNjcmlwdCBhc3luYyB0
+        eXBlPSJ0ZXh0L2phdmFzY3JpcHQiIGlkPSJtaW5pLXByb2ZpbGVyIiBzcmM9
+        Ii9taW5pLXByb2ZpbGVyLXJlc291cmNlcy9pbmNsdWRlcy5qcz92PWUwZTUw
+        ZjU1MWZhNDY0ZjlkOTVjMmUwODJiYjJkNDViIiBkYXRhLXZlcnNpb249ImUw
+        ZTUwZjU1MWZhNDY0ZjlkOTVjMmUwODJiYjJkNDViIiBkYXRhLXBhdGg9Ii9t
+        aW5pLXByb2ZpbGVyLXJlc291cmNlcy8iIGRhdGEtY3VycmVudC1pZD0ibTM0
+        bmQybXl1aXFsYm8wZWx5cm8iIGRhdGEtaWRzPSJtMzRuZDJteXVpcWxibzBl
+        bHlybyw3MmJ4YzgzbWx3ZmtjNzdidHN0aSxsZmVnOWZsemIxamV3ZDJlZHRv
+        IiBkYXRhLXBvc2l0aW9uPSJsZWZ0IiBkYXRhLXRyaXZpYWw9ImZhbHNlIiBk
+        YXRhLWNoaWxkcmVuPSJmYWxzZSIgZGF0YS1tYXgtdHJhY2VzPSIxMCIgZGF0
+        YS1jb250cm9scz0iZmFsc2UiIGRhdGEtYXV0aG9yaXplZD0idHJ1ZSIgZGF0
+        YS10b2dnbGUtc2hvcnRjdXQ9IkFsdCtQIiBkYXRhLXN0YXJ0LWhpZGRlbj0i
+        ZmFsc2UiPjwvc2NyaXB0Pgo8L2JvZHk+CjwvaHRtbD4K
+    http_version: 
+  recorded_at: Mon, 19 Sep 2016 21:55:31 GMT
+- request:
+    method: post
+    uri: http://localhost:3000/categories
+    body:
+      encoding: US-ASCII
+      string: authenticity_token=DAatDlbqdYPKhFlYDrCpifwyT%2FyNXW%2FiK%2FQU0Su4klFVL0Y%2Bcv6ANML4GJKU1u%2FWwboTE04i%2FwiatfCc4Vk4NQ%3D%3D&category%5Bname%5D=rspec+test+category&commit=Create+Category
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:3000
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Cookie:
+      - _imperilment_session=RVhwRFY5WHFpcUlHR0FVTlRQNmNLUUlPSDhad09acHBpZmNMVC83dll1Mjl6RmcwTVcyRlltellqeUUvNlk4RXJLLzZtTCtWV3oyL0kyRWtTRVRub2RpSk92NjhBY0ZzSFUrY1N5Szg0RkVCMldiNnBYeEtiMUluN2FkU3czYnFFcFE3UnJlZ1NYa1lHUG8xTU9QRFNMS0Y4NFBGYXFXT0k1eE41SUtac0VITGoxWndNQ0RxbEhGMUYyME5nekcxM1lMNmd1UDROVVNNZkpadUxDZ3Qwa0RDRU9IaE9YbVUyaXNYNGEwL2ovaGFmZ2dnQTVnVnptL3RlWnNMRmE2blNWUXpVTUJ3RHFUUjVFaWM4L2dEK3BwT29xc1JvVGhWL0g2YWFtaUhDbnliVUh4TlNGOTlBVG1mRE5iSWRSYW1BRXVNdm94Z2p3THpISjFRb21JNTRnc3JGcS9IVTRjRERTWHF3am1LWjJpK0Zmc3pRV0p2Y3VrdnFHL0tQLzh6UnhZRGpXMjc2N0Q5dkYzQUZ5b2pBUT09LS14U3UvSERLek00RTFOc1lWWFNNY0J3PT0%3D--2ef19fe03d51343129cd82ab9d0b7daef4f88cd4;
+        path=/; HttpOnly, __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/
+  response:
+    status:
+      code: 302
+      message: 'Found '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Location:
+      - http://localhost:3000/categories/155
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 4e6cabe2-f4d0-49d9-9896-2d4c60cd1347
+      X-Runtime:
+      - '0.089937'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.9/2016-03-30)
+      Date:
+      - Mon, 19 Sep 2016 21:55:31 GMT
+      Content-Length:
+      - '102'
+      Connection:
+      - Keep-Alive
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      - _imperilment_session=M1RCTHlBT3o1YmJKYVlOc1pJWWxFRnVkVVlMOWJnVWpTS2lIdUlTUzNIbnFuOUFERzgyU013YUx1Q1ZMeE5NZiszakJFbnVLQXZDcStJUlo0RUNrSWFCSUY1N3BXa1U5OVRwejl0bnEra2ZnT0xtN2RRWWEvZUdvaDFWZEptWlJJOEpxU3RROGxrbkFTNzVPZ3BXNm1Tek85eDRFWlNwQzl4cGJOUEdibzZ2ZlpVVDBPOWNnc0JaTkRtNFVqZkQrczV3bUlwVnJmMHZKVXloSGFJVEFkaUdvZGxFdlhxVEMwSDhJOUt5VXAwNUVOdUFlTkhURGdMMDJreC91ek4wZEp0enRmWCtra3lmRWZkY2NZUGFRSmNTTmxWa0NldUFzc08yTUZMc3Nwb3ozellBS2pxaGNPSzN3MzA5S2RGNTBIbGdkeHRuLzRqT1ZlcFRlK3JlWnNuMDJRd1c3SFpGbHNVMjJpVEZVNUVRcHNRTVVSUUh5cVBpd0xPU2JaRUppUk5ENTFwMVVMdldiSWpWNHZ6SFc2UT09LS1QazR5WENCREVpZmZMNmI5YnhxcENRPT0%3D--05042eda9cf010f0ffdb5499483a430b79929714;
+        path=/; HttpOnly
+    body:
+      encoding: UTF-8
+      string: <html><body>You are being <a href="http://localhost:3000/categories/155">redirected</a>.</body></html>
+    http_version: 
+  recorded_at: Mon, 19 Sep 2016 21:55:31 GMT
+recorded_with: VCR 3.0.3
