@@ -1,6 +1,7 @@
 require 'game_builder/game'
 require 'nokogiri'
 require 'open-uri'
+require 'constants'
 
 module GameBuilder
   class MissingRoundError < StandardError
@@ -20,7 +21,15 @@ module GameBuilder
     # @param source [String] is the fully qualified resource path, default is nil
     # @note if source is not provided, a random game from the JArchive site is selected
     def new_game!(source=nil)
-      source = game_list(season_list.sample).sample unless source
+      if !source
+        seasons = case SEASONS
+                  when :all
+                    season_list
+                  else
+                    season_list[0..SEASONS].sample
+                  end
+        source = game_list(seasons).sample
+      end
       @doc = parse source
       games.push(Game.new(source, rounds))
       @game = games.last
@@ -40,7 +49,7 @@ module GameBuilder
       seasons_node = parse source
       # 'Real' seasons have names that end in a number (exclude pilot and super jeapordy seasons)
       real_seasons = seasons_node.xpath("//div[@id='content']//a").select { |season| ('0'..'9').include? season.text[-1] }
-      real_seasons.map { |season| "http://www.j-archive.com/#{season['href']}" }.reverse 
+      real_seasons.map { |season| "http://www.j-archive.com/#{season['href']}" }
     end
 
     # Get a list of all games of Jeopardy from a season, from JArchive or a provided source
@@ -122,6 +131,7 @@ module GameBuilder
     end
 
     # Calculate the clue value based on the grid co-ordinates
+    # TODO: Change to pull actual values here, can be corrected later!
     def clue_value(id_tag)
       return nil if id_tag.nil?
       level = id_tag[-1].to_i
