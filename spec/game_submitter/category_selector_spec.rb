@@ -75,5 +75,14 @@ module GameSubmitter
         end
       end
     end
+
+    describe "#final_category" do
+      let(:clue) { GameBuilder::Clue.new("Final A", "Final Q") }
+      let(:category) {GameBuilder::Category.new("Final Jeopardy", [clue]) }
+      let(:round) { GameBuilder::Round.new([category]) }
+      let(:selection) { CategorySelector.new(round, true).final_category }
+
+      it { expect(selection).to eql(category) }
+    end
   end
 end
