@@ -15,10 +15,10 @@ module GameSubmitter
     # @param user [String] is the username for an admin account
     # @param pwd [String] is the password for an admin account
     # @param uri [URI] is the URI for the imperilment server
-    def initialize user, pwd, uri
+    def initialize uri, user, pwd
+      @uri = uri
       @user = user
       @pwd = pwd
-      @uri = uri
     end
 
     # Create a new game on the Imperilment web server.

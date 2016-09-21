@@ -16,7 +16,7 @@ module GameSubmitter
     end
 
     context "#create_game", vcr: true do
-      let(:comm) { ImperilmentCommunicator.new(@user, @pwd, @uri) }
+      let(:comm) { ImperilmentCommunicator.new(@uri, @user, @pwd) }
       let(:result) { comm.create_game }
 
       it { expect{ result }.not_to raise_error }
@@ -24,7 +24,7 @@ module GameSubmitter
     end
 
     context "#create_category", vcr: true do
-      let(:comm) { ImperilmentCommunicator.new(@user, @pwd, @uri) }
+      let(:comm) { ImperilmentCommunicator.new(@uri, @user, @pwd) }
       let(:result) { comm.create_category "rspec test category" }
 
       it { expect{ result }.not_to raise_error }
@@ -32,7 +32,7 @@ module GameSubmitter
     end
 
     context "#create_answer", vcr: true do
-      let(:comm) { ImperilmentCommunicator.new(@user, @pwd, @uri) }
+      let(:comm) { ImperilmentCommunicator.new(@uri, @user, @pwd) }
       let(:gid) { comm.create_game }
       let(:cid) { comm.create_category "rspec test category" }
       let(:ans) { "Rspec test answer" }
