@@ -19,10 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 
-
-# set :output, "~/Documents/Stembolt/imperilment_game_maker/cron.log"
-# 
 # every :monday, at: '8am' do
-#   command "echo \"Creating new imperilment on: $(date)\""
-#   command "ruby ~/Documents/Stembolt/imperilment_game_maker/submit_game.rb http://localhost:3000 admin@example.com test123"
+#   command "ruby <path-to-app>/submit_game.rb <http://host:port> <user> <pwd>"
 # end
