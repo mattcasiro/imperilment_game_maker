@@ -32,7 +32,7 @@ module GameSubmitter
 
     # Returns a cleaned duplicate of the Final Jeopardy category
     def final_category
-      if round.categories.size > 1 || round.categories[0].clues.size > 1
+      if round.categories.size != 1 || round.categories[0].clues.size != 1
         raise RuntimeError, "Round does not appear to be a Final Jeopardy"
       end
       round.categories[0]
