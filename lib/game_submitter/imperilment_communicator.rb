@@ -3,9 +3,12 @@ require 'active_support/core_ext/numeric/time'
 require 'net/http'
 require 'json'
 require 'nokogiri'
+require 'pry'
 
 module GameSubmitter
   class ResponseError < StandardError
+  end
+  class NoGamesError < StandardError
   end
 
   class ImperilmentCommunicator
@@ -27,15 +30,16 @@ module GameSubmitter
     #       on the server, or a start date is provided
     #
     # @param ended_at [Date] the date the game ends on, defaults to
-    #       seven days after the most recent game
+    #       seven days after the most recent game, required if no games exist
     # @returns [Int] the id of the game that was created
     def create_game ended_at=nil
       # Create game via Imperilment API
       result = Net::HTTP.start(uri.host, uri.port) do |http|
-        ended_at = last_game_date(http) + 7.days unless ended_at
+        ended_at = last_game_date + 7.days unless ended_at
+
         uri.path = '/games/new'
         result = get_request http
-        raise ResponseError, "Invalid response code" if result.code.to_i != 200
+        raise ResponseError, "Invalid get response" if result.code.to_i != 200
 
         uri.path = '/games'
         form_data = {
@@ -45,7 +49,7 @@ module GameSubmitter
         }
         post_request http, form_data
       end
-      raise ResponseError, "Invalid response code" if result.code.to_i != 302
+      raise ResponseError, "Invalid post response" if result.code.to_i != 302
 
       # Parse game id from HTTP result
       result.to_hash["location"][0][(uri.to_s.length + 1)..-1].to_i
@@ -59,7 +63,7 @@ module GameSubmitter
       result = Net::HTTP.start(uri.host, uri.port) do |http|
         uri.path = '/categories/new'
         result = get_request http
-        raise ResponseError, "Invalid response code" if result.code.to_i != 200
+        raise ResponseError, "Invalid get response" if result.code.to_i != 200
 
         uri.path = '/categories'
         form_data = {
@@ -69,7 +73,7 @@ module GameSubmitter
         }
         post_request http, form_data
       end
-      raise ResponseError, "Invalid response code" if result.code.to_i != 302
+      raise ResponseError, "Invalid post response" if result.code.to_i != 302
 
       # Parse game id from HTTP result
       result.to_hash["location"][0][(uri.to_s.length + 1)..-1].to_i
@@ -83,11 +87,11 @@ module GameSubmitter
     # @param question [String] is the question the user should provide
     # @param value [Int] is the dollar value (nil for Final Jeopardy)
     # @returns [Int] the id for the answer that was created
-    def create_answer game_id, category_id, answer, question, value, start_date
+    def create_answer game_id, category_id, question, answer, value, start_date
       result = Net::HTTP.start(uri.host, uri.port) do |http|
         uri.path = "/games/#{game_id}/answers/new"
         result = get_request http
-        raise ResponseError, "Invalid response code" if result.code.to_i != 200
+        raise ResponseError, "Invalid get response" if result.code.to_i != 200
 
         uri.path = "/games/#{game_id}/answers"
         form_data = {
@@ -100,10 +104,25 @@ module GameSubmitter
         }
         post_request http, form_data
       end
-      raise ResponseError, "Invalid response code" if result.code.to_i != 302
+      raise ResponseError, "Invalid post response" if result.code.to_i != 302
 
       # Parse game id from HTTP result
       result.to_hash["location"][0][(uri.to_s.length + 1)..-1].to_i
+    end
+
+    # Get the end-date of the most recent game from the web server
+    #
+    # @returns [Date] the end_date of the most recent game
+    # @raise [NoGamesError] if there are no games on the server
+    def last_game_date
+      Net::HTTP.start(uri.host, uri.port) do |http|
+        uri.path = "/games.json"
+        result = get_request http
+        if JSON.parse(result.body).empty?
+          raise NoGamesError, "No games exist on the server"
+        end
+        Date.strptime(JSON.parse(result.body).first['ended_at'])
+      end
     end
 
     private
@@ -152,13 +171,6 @@ module GameSubmitter
         'commit': 'Sign in',
       }
       post_request http, form_data
-    end
-
-    def last_game_date http
-      uri.path = "/games.json"
-      req = Net::HTTP::Get.new uri
-
-      Time.parse(JSON.parse(http.request(req).body).first['ended_at'])
     end
   end
 end
