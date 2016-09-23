@@ -2,8 +2,9 @@ dir = File.expand_path(File.dirname(__FILE__)) + "/lib"
 $LOAD_PATH.unshift(dir) unless $LOAD_PATH.include? dir
 
 require 'build_game'
-require 'reduce_game'
+require 'game_submitter/clean_game'
 require 'game_submitter/imperilment_communicator'
+require 'constants'
 require 'active_support/core_ext/numeric/time'
 
 def validate_parameters
@@ -33,11 +34,10 @@ def validate_parameters
 end
 
 def next_monday date
-  tmp = date.dup
-  while !tmp.monday?
-    tmp = tmp + 1.day
+  while !date.monday?
+    date = date + 1.day
   end
-  tmp
+  date
 end
 
 validate_parameters
@@ -48,40 +48,49 @@ if ARGV[0]
   ARGV[0] = URI ARGV[0]
 end
 
+# Isolate parameters for comm instantiation
+params = ARGV - [ARGV[3], ARGV[4]]
+
 # Determine number of games to post
 num_games = ARGV[3] ? ARGV[3].to_i : 1
 
-# Isolate game specific parameters
-params = ARGV - [ARGV[3], ARGV[4]]
+# Determine start_date for the first game
+date = if !ARGV[4]
+         GameSubmitter::ImperilmentCommunicator.new(*params).last_game_date.to_s
+       else
+         ARGV[4]
+       end
+date = next_monday Date.strptime(date)
 
 gb = BuildGame.new
-date = next_monday( ARGV[4] ? Time.parse(ARGV[4]) : Time.now )
 
 (1..num_games).map do |i|
-  # Scrape games from JArchive
-  game = begin
-    gb.next_game!
-  rescue DuplicateGameError
-    puts "Duplicate Game Error on iteration #{i}"
-    retry
-  end
+  i_game = begin
+    # Scrape games from JArchive
+    game = gb.next_game!
 
-  # Reduce game to Imperilment format
-  begin
-    i_game = ReduceGame.new.reduce(game)
-  rescue ArgumentError
-    puts "Argument Error on iteration #{i}"
+    # Prepare game for Imperilment submission
+    case DIFFICULTY
+      when :easy
+       GameSubmitter::EasyGame.new(game)
+      when :medium
+       GameSubmitter::MediumGame.new(game)
+      when :hard
+       GameSubmitter::HardGame.new(game)
+      else
+        raise RuntimeError, "Difficulty is not set properly"
+      end.categories
+  rescue DuplicateGameError, ArgumentError
     retry
   end
 
   # Submit game to imperilment server
-  comm = GameSubmitter::ImperilmentCommunicator.new *params
-
+  comm = GameSubmitter::ImperilmentCommunicator.new(*params)
   gid = comm.create_game(date + 6.days)
   i_game.map do |category|
     cid = comm.create_category(category.name)
     category.clues.each do |clue|
-      comm.create_answer gid, cid, clue.answer, clue.question, clue.value, date
+      comm.create_answer gid, cid, clue.question, clue.answer, clue.value, date
       date = date + 1.day
     end
   end
