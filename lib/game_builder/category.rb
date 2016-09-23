@@ -2,6 +2,7 @@ require 'game_builder/clue'
 
 module GameBuilder
   class Category
+    include Comparable
     attr_reader :clues, :name
 
     # Generates a Category object
@@ -19,6 +20,11 @@ module GameBuilder
     def eql?(other)
       return false unless other.is_a?(Category)
       self.clues.eql?(other.clues) && self.name.eql?(other.name)
+    end
+
+    # Sort categories based on their name
+    def <=>(other)
+      self.name <=> other.name
     end
   end
 end
