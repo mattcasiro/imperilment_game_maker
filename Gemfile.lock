@@ -45,7 +45,7 @@ GEM
     safe_yaml (1.0.4)
     slop (3.6.0)
     thread_safe (0.3.6)
-    tzinfo (1.2.9)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     vcr (3.0.3)
     webmock (2.1.0)
